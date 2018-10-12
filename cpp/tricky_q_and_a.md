@@ -23,3 +23,7 @@ FQA: The situations when the rule of thumb is not good enough were not reported 
 http://yosefk.com/c++fqa/ref.html
 - Prefer references to raw pointers to pass arguments to the functions
 - References can not be null (cool!)
+
+### What is RAI? How it works?
+
+We make wrappers for resources (heap memory, locks, db conncetions, network) and then we acquire this resources in wrappers constructors and release them on objects' destruction.
