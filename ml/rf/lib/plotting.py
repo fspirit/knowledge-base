@@ -5,7 +5,8 @@ from collections import namedtuple
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-EpisodeStats = namedtuple("Stats",["episode_lengths", "episode_rewards"])
+EpisodeStats = namedtuple("Stats", ["episode_lengths", "episode_rewards"])
+
 
 def plot_cost_to_go_mountain_car(env, estimator, num_tiles=20):
     x = np.linspace(env.observation_space.low[0], env.observation_space.high[0], num=num_tiles)
@@ -59,7 +60,6 @@ def plot_value_function(V, title="Value Function"):
     plot_surface(X, Y, Z_ace, "{} (Usable Ace)".format(title))
 
 
-
 def plot_episode_stats(stats, smoothing_window=10, noshow=False):
     # Plot the episode length over time
     fig1 = plt.figure(figsize=(10,5))
@@ -96,3 +96,31 @@ def plot_episode_stats(stats, smoothing_window=10, noshow=False):
         plt.show(fig3)
 
     return fig1, fig2, fig3
+
+
+from matplotlib import pyplot as plt
+
+
+def plot_blackjack_policy_on_grid(policy_fn):
+    player_hand = np.arange(12, 22, 1)
+    dealer_hand = np.arange(1, 11, 1)
+
+    xv, yv = np.meshgrid(player_hand, dealer_hand)
+
+    def get_policy_table(policy_fn, usable_ace):
+        policy_table = np.zeros((len(player_hand), len(dealer_hand)))
+        it = np.nditer(policy_table, flags=['multi_index'])
+        while not it.finished:
+            i, j = it.multi_index
+            policy_table[i, j] = policy_fn((xv[i, j], yv[i, j], usable_ace))
+            it.iternext()
+        return policy_table
+
+    usable_ace_table = get_policy_table(policy_fn, True)
+    no_usable_ace_table = get_policy_table(policy_fn, False)
+
+    plt.figure(figsize=(5, 10))
+    plt.subplot(2, 1, 1)
+    plt.pcolormesh(xv, yv, usable_ace_table)
+    plt.subplot(2, 1, 2)
+    plt.pcolormesh(xv, yv, no_usable_ace_table)
