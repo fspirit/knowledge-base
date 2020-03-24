@@ -1,3 +1,5 @@
+### How do we know that this software architecture is good?
+
 As we previously stated, a good architecture must support:
 
 - The use cases and operation of the system.
