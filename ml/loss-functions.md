@@ -1,16 +1,21 @@
-##  Loss Functions
+##  What are loss functions? When are they used? Name several most important ones for regression and classification.
 
 Loss functions is a function which describes how well thge model fits our data.
 If it fits data perfectly, the loss function should be 0. Usually loss fuction output is [0, eternity].
 
-### Regression
+Regression:
+- MSE
+- MAE
 
-#### Mean squared error (MSE) 
-#### Mean absolute error (MAE)
+Classification:
+- Logistic regression loss
+- Hinge loss
+- Hinge squared loss
 
-When using MAE is appropriate?
+### What is 'mean squared error' (MSE) loss function?
 
-### Classification
+### What is 'mean absolute error' (MAE) loss function. When is it appropriate to use it instead of MSE?
+
 
 #### Multinomial Logistic Resression Loss
 
@@ -20,8 +25,8 @@ than normalize as `prob_i = exp(score) / np.sum(exp.scores)`. So now we get Soft
 Our desired loss function is a function which maximized log-likelihood of correct class for each input. 
 To maximize log(A) we can minimize -log(A). So out target loss functions is `-log(prob_correct_class)` summed up for 
 all the data.
-
-#### Hinge Loss
+ 
+#### Describe the 'Hinge' loss function. Draw a plot.
 
 ```
 def hinge_loss(scores, target_y):
@@ -30,11 +35,6 @@ def hinge_loss(scores, target_y):
 	return np.sum(values)
 ```
 
-#### Hinge Squared Loss
+#### Describe Hinge Squared loss. Draw a plot.
 
 The same as `Hinge` but `np.max(0, scores - scores[target_y] + 1) ** 2`.
-
-## Metrics
-- Precision
-- Recall
-- F1 score 
