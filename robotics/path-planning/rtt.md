@@ -32,8 +32,6 @@ K * nearest_neibour_perf(K)
 
 Use `connect` instead of `extend`.
 
-Bidirectional RTT.
-
-
+Bidirectional RTT (maybe separate topic).
 
 ## Describe RTT* algorithm for path planning. What are its advantages over plain RTT?
