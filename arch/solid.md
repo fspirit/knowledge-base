@@ -1,4 +1,4 @@
-## SOLID
+## What are SOLID software engineering principles?
 
 ### Single Responsibility (SRP)
 
@@ -20,7 +20,7 @@ Entities must not depend on things, that they dont need.
 
 High-level policies should not depend on low-level details. That means business logic components must use interfaces that detailes will depend on.
 
-## Component Principles
+## What are R.Martin's Component Principles?
 
 Martin defines component as a set of classes/modules that can be separately released and deployed.
 
