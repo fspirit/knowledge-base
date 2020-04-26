@@ -22,9 +22,9 @@ Control theory deals mostly with systems described by ordinary differential equa
 
 `x'(t) = Ax`
 
-Where x is a state vector (like coordintes, angles and derivatives of those)
+Where `x` is a state vector (like coordintes, angles and derivatives of those)
 
-Which have a solution for x at timestep t like
+Which have a solution for `x` at timestep `t` like
 
 x(t) = e<sup>At</sup>x(0)
 
