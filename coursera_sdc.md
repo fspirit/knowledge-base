@@ -13,7 +13,7 @@ There are 2 main types of parametric curves used for local path planning:
 
 Describes changes in cartesian coordinates, u is unitless thing in interval [0; 1]
 
-x(u) = &alpha;<sub>5</sub>u<sup>5</sup> + &alpha;<sub>4</sub>u<sup>4</sup> + ... + &alpha;<sub>0</sub>
+x(u) = &alpha;<sub>5</sub>u<sup>5</sup> + &alpha;<sub>4</sub>u<sup>4</sup> + ... + &alpha;<sub>0</sub>\
 y(u) = &beta;<sub>5</sub>u<sup>5</sup> + &beta;<sub>4</sub>u<sup>4</sup> + ... + &beta;<sub>0</sub>
 
 Total: 12 params
