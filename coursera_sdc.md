@@ -1,4 +1,3 @@
----
 ## What representations for path can be used for local path generation? (Name two most popular ones and are their pro/cons)
 
 The result of optimization problem solution is the params of parametric curve **r(u)**.
@@ -55,6 +54,7 @@ Con:
 The downside of using polynomial spirals is that there is no closed form solution of the position and heading of the spiral (expressions to calculate them contain integrals and thus complicated/iterative computation is required) , unlike the case in the quintic spline. Therefore, we must perform an iterative optimization in order to generate a spiral that satisfies our boundary conditions. As can be seen here, the position equations results in Fresnel integrals, which have no closed form solution. We therefore need to use numerical approximation techniques to compute the final end points of the spiral.
 
 ---
+
 ## What is optimization problem formulation for local path generation? What is input/output? What is the difference between hard & soft constraints? Which objective functions can be used?
 
 Optimization problem consists of 
