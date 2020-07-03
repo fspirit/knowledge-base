@@ -37,14 +37,14 @@ Curvature is not that easily calculated from x, y and it derivatives
 
 K(u) = x'(u)y''(u) - y'(u)x''(u) / (x'(u)<sup>2</sup> + y'(u)<sup>2</sup>)<sup>3/2</sup>
 
-So solution can be discontiniuos in K. It hard to properly constrain curvature (set proper constraints through x and y).
+So solution can be discontiniuos in K. It's hard to properly constrain curvature (set proper constraints through x and y).
 
 *Qubic Spiral*
 
 Describe change in heading &theta; and curvature K.
 
 K(u) = &alpha;<sub>3</sub>s<sup>3</sup> + &alpha;<sub>2</sub>s<sup>2</sup> + ... + &alpha;<sub>0</sub>\
-&theta;(s) = &theta;<sub>0</sub> + integral(0 to s) of K(s)ds (as K(s) = Q'(s)) = \
+&theta;(s) = &theta;<sub>0</sub> + integral(0 to s) of K(s)ds (as K(s) = &theta;'(s)) = \
     &theta;<sub>0</sub> + &alpha;<sub>3</sub>u<sup>4</sup>/4 + &alpha;<sub>2</sub>u<sup>3</sup>/3 + ... + &alpha;<sub>0</sub>
 
 
