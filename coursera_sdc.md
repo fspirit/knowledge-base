@@ -86,6 +86,31 @@ General rule is reduce number of strict equality constraints and number of param
 ---
 ## Which libs can be used to solve local path generation optimization problem?
 
+Python: ScyPy
+
+SciPy optimized library contains a generic minimize function.
+
+```
+result = sp.minimize(objective_function, x_0, method='L-BFGS-B',
+					 jac=objective_jacobian, bounds=bounds,
+					 options={'disp' : True})
+```
+
+Some examples of the available optimization methods include conjugate gradient, Nelder-Mead, dogleg, and BFGS. 
+
+Examples of objective function and its jacobian (vector of partial derivatives)
+
+```
+def objective_function(x):
+    return x[0]**2 + 4*x[0]*x[1]
+
+def objective_jacobian(x):
+    return np.array([2*x[0] + 4x[1], 4*x[0]])
+```
+
+As boudns param we can pass array of different types of constraints. (examples can be lokked up in SciPy documentation)
+
+
 ---
 ## What is velocity profile for a path? How can it be generated? (Name several methods) What is input/output for that process?
 
