@@ -92,7 +92,8 @@ SciPy optimized library contains a generic minimize function.
 
 ```
 result = sp.minimize(objective_function, x_0, method='L-BFGS-B',
-					 jac=objective_jacobian, bounds=bounds,
+					 jac=objective_jacobian, 
+					 bounds=bounds,
 					 options={'disp' : True})
 ```
 
@@ -108,7 +109,29 @@ def objective_jacobian(x):
     return np.array([2*x[0] + 4x[1], 4*x[0]])
 ```
 
-As boudns param we can pass array of different types of constraints. (examples can be lokked up in SciPy documentation)
+As bounds param we can pass array of different types of constraints. (examples can be looked up in SciPy documentation)
+
+---
+## How the Conformal Lattice Planner works? How is the goal point selected?
+
+Goal point is the final point of trajectory to plan. The selection of goal point should usually depend on speed of the vehicle, the slowe we go the closer can be goal point, the faster we go the further we need to plan trajectory to be able to avoid obstacles on time.
+On the other hand closer obstacle means shorter trajectory and less calculations - hence to descrease the runtime of algo.
+
+Step 1: Select the goal point
+
+Step 2: Generate from it a set of additional goal points,  laterally deviating from goal point relative to road direction.
+
+Step 3: For each goal point generate a path (a spiral or a spline) using optimization algorithms.
+
+Step 4: Sample points for all generated paths. If we use spirals we will have to numerically solve integrals to get points (x,  y). For instance, Trapezoidal Rule can be used.
+
+Step 5: Select paths which are collision free. For that for each point of the path check for collision (circle-bases or swath-based collision checking)
+
+Step 6: According to some objective function (closer to centerline is better, closer t oobstacle is worse) - select only one final path.
+
+Step 7: Set next point in the path as target for control.
+
+Repeat everything next step.
 
 
 ---
