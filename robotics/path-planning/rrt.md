@@ -2,7 +2,8 @@
 
 ### Sources
 
-https://theclassytim.medium.com/robotic-path-planning-rrt-and-rrt-212319121378
+RRT/RRT*: https://theclassytim.medium.com/robotic-path-planning-rrt-and-rrt-212319121378
+RRT: http://lavalle.pl/rrt/about.html
 
 ### Setup
 
@@ -11,7 +12,7 @@ We have target configuration or set or target configurations.
 We also have a robot motion model, which could tell us if its possible to apply certain control `u` to a robot to go
 from A to B and which `u` will it then be.
 
-### RTT Algorithm
+### RRT Algorithm
 
 ```
 x_goal = region()
@@ -35,14 +36,14 @@ Optimality: Does not guarantee shortest path.
 
 Builds very square trees.
 
-### Bidirectional RTT
+### Bidirectional RRT
 
 Starts building trees from intial and goal positions simulteneously.
 
 Pros:
 - converges faster.
 
-### RTT*
+### RRT*
 
 When adding new node to the tree it checks weather some nodes in proximity to new node can be made its chidren to lower their costs.
 The cost of the node is the distance from parent node.
@@ -71,4 +72,4 @@ Pros:
 - builds shorter / straighter paths
 
 Cons:
-- is slower than RTT because of additional collision checking when rewiring the nodes
+- is slower than RRT because of additional collision checking when rewiring the nodes
