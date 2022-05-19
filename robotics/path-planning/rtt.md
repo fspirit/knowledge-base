@@ -1,4 +1,8 @@
-## Describe RTT algorithm for path planning. Problem setup. Variations. Correctness. Running time.
+## Describe RTT/BidirectionalRTT/RTT* algorithms for path planning. Problem setup. Completeness. Running time.
+
+### Sources
+
+https://theclassytim.medium.com/robotic-path-planning-rrt-and-rrt-212319121378
 
 ### Setup
 
@@ -22,16 +26,21 @@ for i in (0, K):
         return G
 ```
 
-If x_goal is reachable  from starting point, algorithm will find it.
 
-### Performance
 
-K * nearest_neibour_perf(K) 
+### Runtime
 
-### Variants:
+K * nearest_neighbour_perf(K) 
 
-Use `connect` instead of `extend`.
+### Completeness
 
-Bidirectional RTT (maybe separate topic).
+If x_goal is reachable  from starting point, algorithm will find it, given enough steps K.
 
-## Describe RTT* algorithm for path planning. What are its advantages over plain RTT?
+### Optimality
+
+Does not guarantee shortest path.
+
+### Variants / Upgrades:
+
+Bidirectional RTT (maybe separate topic) - converges faster.
+RTT* - gives optimality guarantees
