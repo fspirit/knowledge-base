@@ -11,7 +11,7 @@ We have target configuration or set or target configurations.
 We also have a robot motion model, which could tell us if its possible to apply certain control `u` to a robot to go
 from A to B and which `u` will it then be.
 
-### Algorithm
+### RTT Algorithm
 
 ```
 x_goal = region()
@@ -27,20 +27,48 @@ for i in (0, K):
 ```
 
 
+Runtime:  K * nearest_neighbour_perf(K) 
 
-### Runtime
+Completeness: If x_goal is reachable  from starting point, algorithm will find it, given enough steps K.
 
-K * nearest_neighbour_perf(K) 
+Optimality: Does not guarantee shortest path.
 
-### Completeness
+Builds very square trees.
 
-If x_goal is reachable  from starting point, algorithm will find it, given enough steps K.
+### Bidirectional RTT
 
-### Optimality
+Starts building trees from intial and goal positions simulteneously.
 
-Does not guarantee shortest path.
+Pros:
+- converges faster.
 
-### Variants / Upgrades:
+### RTT*
 
-Bidirectional RTT (maybe separate topic) - converges faster.
-RTT* - gives optimality guarantees
+When adding new node to the tree it checks weather some nodes in proximity to new node can be made its chidren to lower their costs.
+The cost of the node is the distance from parent node.
+
+```
+Rad = r
+G(V,E) // Graph containing edges and vertices
+For itr in range(0…n)
+    Xnew = RandomPosition()
+    If Obstacle(Xnew) == True, try again
+    Xnearest = Nearest(G(V,E),Xnew)
+    Cost(Xnew) = Distance(Xnew,Xnearest)
+    Xbest,Xneighbors = findNeighbors(G(V,E),Xnew,Rad)
+    Link = Chain(Xnew,Xbest)
+    For x’ in Xneighbors
+        If Cost(Xnew) + Distance(Xnew,x’) < Cost(x’)
+            Cost(x’) = Cost(Xnew)+Distance(Xnew,x’)
+            Parent(x’) = Xnew
+            G += {Xnew,x’}
+    G += Link 
+Return G
+```
+
+Pros:
+- gives optimality guarantees
+- builds shorter / straighter paths
+
+Cons:
+- is slower than RTT because of additional collision checking when rewiring the nodes
